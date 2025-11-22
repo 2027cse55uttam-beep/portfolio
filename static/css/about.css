@@ -1,0 +1,171 @@
+/* about.css — Modern UI/UX for About page
+   Features: clean layout, subtle glass accents, stagger reveal, card tilt, accessible
+*/
+
+/* Variables */
+:root {
+    --bg: #0f1724;
+    --panel: #0b1220;
+    --accent: #7c5cff;
+    --accent-2: #4fd1c5;
+    --muted: #98a3b3;
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --glass-blur: 10px;
+    --radius-lg: 16px;
+    --easing: cubic-bezier(.16, .84, .28, 1);
+}
+
+/* Base */
+.about-section {
+    background: linear-gradient(180deg, #071021 0%, #081427 100%);
+    color: #e6eef8;
+    padding: clamp(48px, 6vw, 96px) 20px;
+    -webkit-font-smoothing: antialiased;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.container {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+/* Title */
+.section-title {
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 18px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* About content area */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: clamp(20px, 3vw, 48px);
+    align-items: start;
+    margin-top: 28px;
+}
+
+/* Bio block */
+.about-bio {
+    color: #cfe6ff;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    padding: 28px;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.5);
+    backdrop-filter: blur(var(--glass-blur)) saturate(120%);
+}
+
+/* Skills grid (right col) */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+/* Skill card */
+.skill-card {
+    padding: 16px 14px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    color: #e9f2ff;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    transform-origin: center;
+    transition:
+        transform 320ms var(--easing),
+        box-shadow 320ms var(--easing),
+        background 320ms var(--easing);
+    cursor: default;
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover: subtle lift & glow */
+.skill-card:hover,
+.skill-card:focus {
+    transform: translateY(-8px) rotateX(3deg) scale(1.02);
+    background: linear-gradient(135deg, rgba(124, 92, 255, 0.12), rgba(79, 209, 197, 0.06));
+    box-shadow: 0 18px 40px rgba(79, 82, 255, 0.12);
+    outline: none;
+}
+
+/* Make cards keyboard-focusable if JS adds tabindex */
+.skill-card[tabindex="0"] {
+    outline-offset: 4px;
+}
+
+/* Placeholder text style */
+.about-bio p {
+    margin: 0 0 16px 0;
+    color: #cfe6ff;
+}
+
+/* Animation utilities */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 600ms var(--easing), transform 600ms var(--easing);
+    will-change: opacity, transform;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Small stagger helper (JS will set inline style --delay) */
+[data-delay] {
+    transition-delay: var(--delay, 0s);
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+
+@media (max-width: 520px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-bio {
+        padding: 18px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+    .animate-on-scroll {
+        transition: none;
+        transform: none;
+        opacity: 1;
+    }
+
+    .skill-card,
+    .about-bio {
+        transition: none;
+        transform: none;
+    }
+}

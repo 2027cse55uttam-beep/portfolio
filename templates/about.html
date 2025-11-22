@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}About - Portfolio{% endblock %}
+{% block content %}
+
+<section class="about-section py-20 bg-gradient-to-b from-[#0a0f1f] to-[#0d152b] text-white">
+    <div class="container mx-auto px-6 max-w-6xl">
+
+        <!-- Heading -->
+        <h1
+            class="text-4xl md:text-6xl font-bold tracking-tight text-center mb-14 opacity-0 translate-y-10 transition-all duration-700 animate-on-scroll">
+            About Me
+        </h1>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+
+            <!-- Bio Section -->
+            <div class="space-y-6 opacity-0 translate-y-10 transition-all duration-700 animate-on-scroll">
+                <p class="text-lg leading-relaxed text-gray-300">
+                    I am a passionate <span class="text-blue-400 font-semibold">Django Developer</span>
+                    who loves building clean, modern and scalable web applications.
+                    I focus on writing clean code, creating user-centric designs, and
+                    bringing ideas to life with smooth interactions and animations.
+                </p>
+
+                <p class="text-lg leading-relaxed text-gray-300">
+                    My goal is simple — deliver <span class="text-blue-400 font-semibold">professional grade
+                        interfaces</span>
+                    with exceptional performance and visually pleasing experiences.
+                </p>
+
+                <a href="/contact"
+                    class="inline-block mt-4 px-8 py-3 bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-xl shadow-lg shadow-blue-600/20 text-white font-semibold backdrop-blur">
+                    Contact Me →
+                </a>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-2 gap-5">
+                <!-- Skill Card -->
+                <div class="skill-card p-6 rounded-2xl bg-white/10 border border-white/10 backdrop-blur 
+                            opacity-0 translate-y-10 transition-all duration-700 animate-on-scroll">
+                    Django & Python
+                </div>
+
+                <div class="skill-card p-6 rounded-2xl bg-white/10 border border-white/10 backdrop-blur 
+                            opacity-0 translate-y-10 transition-all duration-700 animate-on-scroll" data-delay="0.1s">
+                    HTML / CSS / JavaScript
+                </div>
+
+                <div class="skill-card p-6 rounded-2xl bg-white/10 border border-white/10 backdrop-blur 
+                            opacity-0 translate-y-10 transition-all duration-700 animate-on-scroll" data-delay="0.2s">
+                    Responsive Design
+                </div>
+
+                <div class="skill-card p-6 rounded-2xl bg-white/10 border border-white/10 backdrop-blur 
+                            opacity-0 translate-y-10 transition-all duration-700 animate-on-scroll" data-delay="0.3s">
+                    Git & Deployment
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home - Portfolio{% endblock %}
+
+{% block content %}
+
+<!-- ========================
+      HERO SECTION
+========================= -->
+<section class="hero-section animate-on-scroll">
+    <div class="hero-container">
+
+        <div class="hero-text">
+            <h1 class="hero-title">
+                Hi, I'm <span class="highlight">Uttam</span><br>
+                I Create Digital Experiences.
+            </h1>
+
+            <p class="hero-subtitle">
+                A passionate frontend + backend developer working with  
+                <strong>Django, JavaScript, HTML, CSS & UI/UX</strong>
+                to build clean, modern & responsive web experiences.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="hero-btn primary">View Projects</a>
+                <a href="/about" class="hero-btn secondary">About Me</a>
+            </div>
+        </div>
+
+        <div class="hero-image-wrapper">
+            <img src="{% static 'images/hero.jpeg' %}" class="hero-image" alt="Portfolio Hero Image">
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ========================
+      PROJECTS SECTION
+========================= -->
+<section id="projects" class="projects-section">
+    
+    <div class="section-header animate-on-scroll">
+        <h2 class="section-heading">Featured Projects</h2>
+        <p class="section-subtext">Some of my best work picked for you</p>
+    </div>
+
+    <div class="projects-grid">
+        {% for project in projects %}
+        <div class="project-card animate-on-scroll" data-delay="{{ forloop.counter0|add:'0.1' }}s">
+
+            <div class="project-img-wrapper">
+                {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" loading="lazy">
+                {% else %}
+                    <div class="project-placeholder">No Image</div>
+                {% endif %}
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">{{ project.title }}</h3>
+                <p class="project-description">{{ project.description|truncatewords:18 }}</p>
+
+                {% if project.link %}
+                <a href="{{ project.link }}" target="_blank" class="project-btn">
+                    View Project →
+                </a>
+                {% endif %}
+            </div>
+
+        </div>
+
+        {% empty %}
+        <p class="no-projects">No projects added yet.</p>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Contact - Portfolio{% endblock %}
+
+{% block content %}
+<section class="contact-section">
+    <div class="container">
+        <h1 class="section-title animate-on-scroll">Contact Me</h1>
+
+        <!-- Success/Error Messages -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form id="contact-form" class="contact-form" method="post" action="{% url 'contact' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <span class="error-msg" id="name-error"></span>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <span class="error-msg" id="email-error"></span>
+            </div>
+            <div class="form-group">
+                <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                <span class="error-msg" id="message-error"></span>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

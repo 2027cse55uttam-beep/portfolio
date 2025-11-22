@@ -1,0 +1,379 @@
+/* ===========================
+   home.css — Modern Premium
+   (For improved home.html)
+   =========================== */
+
+/* ---------- Theme variables ---------- */
+:root {
+    --bg-1: #0f1724;
+    --bg-2: #0b1020;
+    --muted: #9aa4b2;
+    --text: #0b1320;
+    --card-bg: #ffffff;
+    --accent: #6c63ff;
+    --accent-2: #4fd1c5;
+    --glass: rgba(255, 255, 255, 0.08);
+    --radius-lg: 18px;
+    --radius-md: 12px;
+    --easing: cubic-bezier(.16, .84, .28, 1);
+}
+
+/* ---------- Base / Reset ---------- */
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg, #f7fbff 0%, #f3f6fb 100%);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.45;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- Layout container ---------- */
+.container-narrow {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ---------- HERO ---------- */
+.hero-section {
+    padding: 78px 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background:
+        radial-gradient(800px 500px at 10% 10%, rgba(108, 99, 255, 0.06), transparent 8%),
+        radial-gradient(600px 360px at 90% 90%, rgba(79, 209, 197, 0.04), transparent 10%),
+        linear-gradient(180deg, #ffffff, #f3f6fb);
+}
+
+.hero-container {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    width: 100%;
+    max-width: 1180px;
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.85));
+    box-shadow: 0 12px 40px rgba(16, 24, 40, 0.06);
+    backdrop-filter: blur(8px) saturate(120%);
+}
+
+/* Hero text */
+.hero-text {
+    flex: 1;
+    min-width: 280px
+}
+
+.hero-title {
+    font-size: clamp(2rem, 4.2vw, 3.6rem);
+    margin: 0 0 14px;
+    font-weight: 800;
+    letter-spacing: -0.6px;
+    color: #0f1724;
+}
+
+.highlight {
+    background: linear-gradient(90deg, var(--accent), #9b8cff 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Subtitle and buttons */
+.hero-subtitle {
+    margin: 0 0 20px;
+    color: var(--muted);
+    font-size: 1.06rem;
+    max-width: 58ch;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap
+}
+
+.hero-btn {
+    padding: 12px 22px;
+    border-radius: 12px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform .28s var(--easing), box-shadow .28s var(--easing);
+}
+
+.hero-btn.primary {
+    color: white;
+    background: linear-gradient(135deg, var(--accent), #8b5cf6);
+    box-shadow: 0 10px 30px rgba(108, 99, 255, 0.18);
+}
+
+.hero-btn.secondary {
+    color: var(--text);
+    background: rgba(15, 23, 36, 0.06);
+    border: 1px solid rgba(15, 23, 36, 0.06);
+}
+
+.hero-btn.primary:hover {
+    transform: translateY(-4px) scale(1.01)
+}
+
+.hero-btn.secondary:hover {
+    transform: translateY(-3px)
+}
+
+/* Hero image */
+.hero-image-wrapper {
+    width: 420px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.hero-image {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 18px 50px rgba(15, 23, 36, 0.08);
+    transform-origin: center;
+    transition: transform .8s var(--easing);
+}
+
+.hero-image-wrapper:hover .hero-image {
+    transform: translateY(-6px) scale(1.02)
+}
+
+/* ---------- SECTION HEADER ---------- */
+.section-header {
+    text-align: center;
+    margin: 56px 0 28px
+}
+
+.section-heading {
+    font-size: clamp(1.6rem, 2.4vw, 2.4rem);
+    margin: 0;
+    font-weight: 800;
+}
+
+.section-subtext {
+    color: var(--muted);
+    margin-top: 10px;
+    font-size: 0.98rem
+}
+
+/* ---------- PROJECT GRID ---------- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    align-items: start;
+    margin-top: 18px;
+}
+
+/* Project card */
+.project-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(250, 250, 253, 0.98));
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(15, 23, 36, 0.04);
+    box-shadow: 0 10px 26px rgba(2, 6, 23, 0.06);
+    transform: translateY(18px);
+    opacity: 0;
+    transition: transform .52s var(--easing), box-shadow .32s var(--easing), opacity .45s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 360px;
+}
+
+/* visible state toggled by JS */
+.project-card.visible {
+    transform: translateY(0);
+    opacity: 1
+}
+
+/* image area */
+.project-img-wrapper {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #eef2ff, #ffffff);
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.project-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .6s var(--easing)
+}
+
+.project-card:hover .project-img-wrapper img {
+    transform: scale(1.06)
+}
+
+/* content */
+.project-content {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1
+}
+
+.project-title {
+    font-size: 1.15rem;
+    margin: 0;
+    font-weight: 700;
+    color: var(--text)
+}
+
+.project-description {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+    flex: 1
+}
+
+.project-btn {
+    display: inline-block;
+    margin-top: auto;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+    transition: transform .25s var(--easing);
+}
+
+.project-card:hover .project-btn {
+    transform: translateX(6px)
+}
+
+/* placeholder */
+.project-placeholder {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8b96a6;
+    background: repeating-linear-gradient(135deg, #f7fafc 0 8px, #fff 8px 16px);
+}
+
+/* empty state */
+.no-projects {
+    text-align: center;
+    color: var(--muted);
+    padding: 40px;
+}
+
+/* ---------- ANIMATION UTILITIES ---------- */
+/* Stagger support: data-delay attribute used by JS to set transition-delay inline if desired */
+.animate-on-scroll {
+    will-change: transform, opacity;
+}
+
+/* small reveal keyframes (fallback) */
+@keyframes reveal-up {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- BUTTON/FOCUS ACCESSIBILITY ---------- */
+button,
+a {
+    outline-offset: 3px;
+}
+
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+    box-shadow: 0 6px 22px rgba(108, 99, 255, 0.14);
+    border-radius: 10px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 980px) {
+    .hero-container {
+        padding: 30px;
+        gap: 20px;
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center
+    }
+
+    .hero-image-wrapper {
+        width: 70%;
+        max-width: 360px
+    }
+
+    .hero-left {
+        width: 100%
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-section {
+        padding: 48px 0
+    }
+
+    .hero-container {
+        padding: 22px
+    }
+
+    .hero-title {
+        font-size: clamp(1.6rem, 6vw, 2.2rem)
+    }
+
+    .projects-grid {
+        gap: 18px
+    }
+
+    .project-card {
+        min-height: auto
+    }
+}
+
+/* ---------- PERFORMANCE & ACCESSIBILITY ---------- */
+@media (prefers-reduced-motion: reduce) {
+
+    .hero-image,
+    .project-img-wrapper img,
+    .project-card,
+    .hero-btn {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+    }
+}
