@@ -3,7 +3,13 @@ from django.db import models
 class Project(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    image = models.ImageField(upload_to='projects/', blank=True)
+
+    # File upload
+    image = models.ImageField(upload_to='projects/', blank=True, null=True)
+
+    # External image URL
+    image_url = models.URLField(blank=True, null=True)
+
     link = models.URLField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
