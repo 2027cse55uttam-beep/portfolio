@@ -7,7 +7,6 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # =====================================
 # SECURITY
 # =====================================
@@ -16,7 +15,7 @@ SECRET_KEY = 'django-insecure-w^eyieksp=0p7f#l@)#quo@dg9n(p)&9yh*iqz244nkw6@s!2p
 
 DEBUG = False   # Production on Render
 
-ALLOWED_HOSTS = ['*']  # Render auto assigns host
+ALLOWED_HOSTS = ['portfolio-1-75fq.onrender.com', 'localhost']
 
 
 # =====================================
@@ -32,16 +31,20 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'core',   # your app
+
+    # Cloudinary
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 
 # =====================================
-# MIDDLEWARE (WHITENOISE FIXED)
+# MIDDLEWARE
 # =====================================
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # ⭐ REQUIRED FOR RENDER STATIC FILES
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # static
 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -62,7 +65,7 @@ ROOT_URLCONF = 'portfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # ⭐ Your templates folder
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,7 +82,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 
 # =====================================
-# DATABASE (SQLite works fine for Render)
+# DATABASE
 # =====================================
 
 DATABASES = {
@@ -95,24 +98,15 @@ DATABASES = {
 # =====================================
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 
-
 # =====================================
-# STATIC FILES FOR RENDER (IMPORTANT)
+# STATIC FILES (Render)
 # =====================================
 
 STATIC_URL = '/static/'
@@ -127,11 +121,18 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 # =====================================
-# MEDIA (FOR IMAGES)
+# CLOUDINARY MEDIA STORAGE
 # =====================================
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dpalhryd0',
+    'API_KEY': '127239475225411',
+    'API_SECRET': 'wR0ovAQUvCBwroWDwKUbYQpnla0',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+MEDIA_URL = '/media/'   # cloudinary auto handle karega
 
 
 # =====================================
